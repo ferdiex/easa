@@ -45,15 +45,15 @@ EASA_HEADLESS=1 EASA_DOPAMINE_D1=0.2 EASA_DOPAMINE_D2=0.2 python3 easa_standalon
 
 - **Live view**, updating as the simulation progresses:
 
-  ```bash
+```bash
   python3 easa_live_plot.py
-  ```
+```
 
 - **Static view**, once a run has finished, to see the ethogram, motivations, etc. from the most recent log:
 
-  ```bash
+```bash
   python3 easa_plot.py
-  ```
+```
 
 For the full dopamine sweep:
 
@@ -70,4 +70,4 @@ If you use this code, please cite:
 
 ## License
 
-MIT. See `LICENSE`.
+MIT. See [LICENSE](LICENSE).
