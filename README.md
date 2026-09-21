@@ -54,4 +54,4 @@ If you use this code, please cite:
 
 ## License
 
-MIT. See `LICENSE`.
+MIT. See [LICENSE](LICENSE).
