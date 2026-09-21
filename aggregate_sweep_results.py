@@ -7,7 +7,7 @@ Aggregates all easa_log_*.csv / *.json pairs in the current directory
     count, episode length, and a count of "gate-blend" events (wheels
     moving while an arm command is issued in the same decision step --
     the proxy for the SWITCHING_CONSTANT motor-gating mechanism found
-    this session, see notas_sesion_bg90s_real_v2.md).
+    this session, see notes_sesion_easa_real_v2.md).
   - sweep_summary_by_dopamine.csv: the same, aggregated (mean/std/median/
     failure rate) per dopamine value across repetitions.
   - sweep_statistics.csv: NEW -- significance testing for the paper.
@@ -82,7 +82,7 @@ def count_gate_blend_events(csv_path):
     (|left_speed_cmd| or |right_speed_cmd| > 1) in the same decision step
     an arm_target_cmd is issued. This is the observable signature of the
     SWITCHING_CONSTANT motor-gating mechanism (see the 'La pregunta
-    huntingtoniana' section of notas_sesion_bg90s_real_v2.md) -- NOT
+    huntingtoniana' section of notes_sesion_easa_real_v2.md) -- NOT
     simultaneous thalamus crossing, which this session confirmed does not
     happen at these dopamine levels."""
     events = 0
