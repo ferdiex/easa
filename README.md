@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="images/foraging_khepera.jpg" alt="Foraging Khepera I simulated in PyBullet" width="600">
+  <img src="images/foraging_khepera.jpg" alt="Foraging Khepera I simulated in PyBullet" width="800">
 </p>
 
 # Walking and Chewing Gum: A Vertebrate Basal Ganglia Robot under Realistic Contact Physics
