@@ -39,6 +39,22 @@ For a headless run with specific parameters:
 EASA_HEADLESS=1 EASA_DOPAMINE_D1=0.2 EASA_DOPAMINE_D2=0.2 python3 easa_standalone.py
 ```
 
+## Visualization
+
+`easa_standalone.py` only runs the simulation and writes the log; plotting is a separate process. While a run is going (or afterwards), open a **new terminal**, activate the same environment, and from the repo directory run one of:
+
+- **Live view**, updating as the simulation progresses:
+
+  ```bash
+  python3 easa_live_plot.py
+  ```
+
+- **Static view**, once a run has finished, to see the ethogram, motivations, etc. from the most recent log:
+
+  ```bash
+  python3 easa_plot.py
+  ```
+
 For the full dopamine sweep:
 
 ```bash
@@ -54,4 +70,4 @@ If you use this code, please cite:
 
 ## License
 
-MIT. See [LICENSE](LICENSE).
+MIT. See `LICENSE`.
