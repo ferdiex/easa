@@ -1,0 +1,40 @@
+{
+  "_comment": "EASA standalone config. Real Khepera scale throughout (robot, arena, sensors) -- no more compromise numbers.",
+  "world": {
+    "size": 0.6,
+    "gravity": -9.81,
+    "timestep": 0.00416667
+  },
+  "robot": {
+    "urdf_path": "khepera_real.urdf",
+    "friction": {
+      "wheel": 1.5,
+      "chassis": 0.1,
+      "caster": 0.05,
+      "gripper": 10.0
+    },
+    "linear_damping": 0.9,
+    "angular_damping": 0.9,
+    "wheel_motor_force": 14.0,
+    "max_wheel_angvel": 35.0,
+    "arm_hinge_force": 6.0,
+    "finger_close_force": 2.0,
+    "finger_max_velocity": 0.03
+  },
+  "sensors": {
+    "num_sensors": 8,
+    "range": 0.05,
+    "noise_std": 0.01
+  },
+  "bg": {
+    "dopamine_d1": 0.2,
+    "dopamine_d2": 0.2,
+    "fear_init": 1.0,
+    "hunger_init": 0.1
+  },
+  "output": {
+    "log_path": "easa_log.csv",
+    "verbosity": 1,
+    "log_every_n_steps": 5
+  }
+}

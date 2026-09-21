@@ -1,0 +1,285 @@
+<?xml version="1.0" ?>
+<!--
+  khepera_real.urdf: clean reconstruction created in a single pass, based on
+  the real measurements from Khepera1.proto and khepera_gripper.wbt (the
+  official Webots files uploaded to the project).
+
+  REAL values, used as-is without trimming or compromise:
+  - Body: radius 28.5 mm, height 20 mm (the boundingObject from Khepera1.proto).
+  - Wheels: 52 mm separation (26 mm per side), radius 7.5 mm, height 3 mm.
+  - Arm pivot: (-0.01, 0, 0.022), behind and above the body.
+  - Sensors: 8 real angles (6 in front across an arc of +-64 degrees, 2
+    in back), mounting radius approximately 27-28 mm, real range 5 cm.
+  - Fingers: the real travel is 29 mm per side; we use 22 mm per side (44 mm
+    total), increased from the previous 12 mm per side; closer to the real
+    mechanism, but not fully matching it because our gripper_base is smaller
+    than the complete real mechanism.
+
+  We deliberately do NOT care if the wheels/caster visually overlap the body
+  cylinder (the model is simplified rather than using the real hexagonal shape
+  with wheel cutouts); this was an explicit user decision to avoid continuing
+  to troubleshoot that issue.
+
+  The gripper is a horseshoe shape (two legs plus a crossbar at the tip), not
+  a solid box; this was confirmed using the real profile coordinates in
+  khepera_gripper.wbt (a complete outer rectangle with a central cutout that
+  does not extend to the back, resulting in two legs longer than the center).
+  The horseshoe opening faces the body (like a muzzle enclosing it); the only
+  crossbar (gripper_base) is on the gripper side. It remains a SINGLE
+  motor/joint (as in the real file, which has only one RotationalMotor there);
+  the "two legs" are rigid structure, not two independent motors.
+
+  Hinge: axis="0 -1 0"; a positive angle folds the arm upward/backward,
+  while a negative angle lowers the arm forward/downward (the sign was
+  empirically verified during an earlier iteration of this session).
+-->
+<robot name="khepera_real">
+
+  <link name="base">
+    <visual>
+      <geometry>
+        <cylinder length="0.02" radius="0.0285"/>
+      </geometry>
+      <origin xyz="0 0 0.012"/>
+      <material name="green">
+        <color rgba="0.05 0.5 0.09 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.02" radius="0.0285"/>
+      </geometry>
+      <origin xyz="0 0 0.012"/>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0.012"/>
+      <mass value="0.08"/>
+      <inertia ixx="4e-5" iyy="4e-5" izz="6.5e-5" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+
+  <link name="left_wheel">
+    <visual>
+      <geometry>
+        <cylinder length="0.003" radius="0.0075"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <material name="black">
+        <color rgba="0.1 0.1 0.1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.003" radius="0.0075"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0"/>
+      <mass value="0.005"/>
+      <inertia ixx="2e-7" iyy="3e-7" izz="2e-7" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+  <joint name="left_wheel_joint" type="continuous">
+    <parent link="base"/>
+    <child link="left_wheel"/>
+    <origin xyz="0 0.03 0.0075" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <link name="right_wheel">
+    <visual>
+      <geometry>
+        <cylinder length="0.003" radius="0.0075"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <material name="black">
+        <color rgba="0.1 0.1 0.1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.003" radius="0.0075"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0"/>
+      <mass value="0.005"/>
+      <inertia ixx="2e-7" iyy="3e-7" izz="2e-7" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+  <joint name="right_wheel_joint" type="continuous">
+    <parent link="base"/>
+    <child link="right_wheel"/>
+    <origin xyz="0 -0.03 0.0075" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <!-- Caster: not explicitly present in the real .proto; our own addition
+       for physical stability. We do not care if it overlaps the body
+       (user decision). -->
+  <link name="caster">
+    <visual>
+      <origin xyz="-0.028 0 0.004"/>
+      <geometry>
+        <sphere radius="0.004"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.7 0.7 0.7 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.028 0 0.004"/>
+      <geometry>
+        <sphere radius="0.004"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0"/>
+      <mass value="0.01"/>
+      <inertia ixx="3e-7" iyy="3e-7" izz="3e-7" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+  <joint name="caster_joint" type="fixed">
+    <parent link="base"/>
+    <child link="caster"/>
+    <origin xyz="0 0 0"/>
+  </joint>
+
+  <!-- Arm: a single rotational hinge (real: LIFT_HINGE_JOINT), with the
+       real pivot (-0.01, 0, 0.022). -->
+  <link name="arm_link">
+    <!-- Left leg -->
+    <visual>
+      <origin xyz="0.0215 0.026 0"/>
+      <geometry>
+        <box size="0.043 0.006 0.012"/>
+      </geometry>
+      <material name="arm_color">
+        <color rgba="0.6 0.6 0.6 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0215 0.026 0"/>
+      <geometry>
+        <box size="0.043 0.006 0.012"/>
+      </geometry>
+    </collision>
+    <!-- Right leg -->
+    <visual>
+      <origin xyz="0.0215 -0.026 0"/>
+      <geometry>
+        <box size="0.043 0.006 0.012"/>
+      </geometry>
+      <material name="arm_color">
+        <color rgba="0.6 0.6 0.6 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0215 -0.026 0"/>
+      <geometry>
+        <box size="0.043 0.006 0.012"/>
+      </geometry>
+    </collision>
+    <!-- Deliberately no bridge near the pivot: this is where the horseshoe
+         opening is located (it encloses the body like a muzzle). The only
+         crossbar is gripper_base, at the tip. -->
+    <inertial>
+      <origin xyz="0.02 0 0"/>
+      <mass value="0.008"/>
+      <inertia ixx="1.5e-6" iyy="1.5e-6" izz="1.5e-6" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+  <joint name="arm_hinge_joint" type="revolute">
+    <parent link="base"/>
+    <child link="arm_link"/>
+    <origin xyz="-0.01 0 0.022" rpy="0 0 0"/>
+    <axis xyz="0 -1 0"/>
+    <limit lower="-1.2" upper="1.4" effort="10" velocity="1.0"/>
+  </joint>
+
+  <!-- Gripper crossbar, at the tip of the arm -->
+  <link name="gripper_base">
+    <visual>
+      <geometry>
+        <box size="0.004 0.052 0.008"/>
+      </geometry>
+      <material name="gripper_color">
+        <color rgba="0.7 0.7 0.7 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.004 0.052 0.008"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0"/>
+      <mass value="0.004"/>
+      <inertia ixx="5e-7" iyy="5e-7" izz="5e-7" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+  <joint name="gripper_base_joint" type="fixed">
+    <parent link="arm_link"/>
+    <child link="gripper_base"/>
+    <origin xyz="0.043 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <link name="left_finger">
+    <visual>
+      <geometry>
+        <box size="0.025 0.004 0.01"/>
+      </geometry>
+      <material name="finger_color">
+        <color rgba="0.3 0.3 0.3 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.025 0.004 0.01"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0"/>
+      <mass value="0.004"/>
+      <inertia ixx="4e-7" iyy="4e-7" izz="4e-7" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+  <joint name="left_finger_joint" type="prismatic">
+    <parent link="gripper_base"/>
+    <child link="left_finger"/>
+    <origin xyz="0.0125 0.022 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-0.022" upper="0" effort="10" velocity="0.1"/>
+  </joint>
+
+  <link name="right_finger">
+    <visual>
+      <geometry>
+        <box size="0.025 0.004 0.01"/>
+      </geometry>
+      <material name="finger_color">
+        <color rgba="0.3 0.3 0.3 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.025 0.004 0.01"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0"/>
+      <mass value="0.004"/>
+      <inertia ixx="4e-7" iyy="4e-7" izz="4e-7" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+  <joint name="right_finger_joint" type="prismatic">
+    <parent link="gripper_base"/>
+    <child link="right_finger"/>
+    <origin xyz="0.0125 -0.022 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0.022" effort="10" velocity="0.1"/>
+  </joint>
+
+</robot>
