@@ -64,9 +64,11 @@ python3 aggregate_sweep_results.py
 
 ## Citation
 
-If you use this software, please cite the accompanying archival manuscript and the corresponding Zenodo release.
-
-Citation details will be added once the Zenodo DOI and arXiv identifier become available.
+If you use this software, please cite:
+Fernando Montes González.
+Walking and Chewing Gum: A Basal Ganglia Vertebrate Robot Under Realistic Contact Physics.
+Zenodo archive:
+https://doi.org/10.5281/zenodo.22898109
 
 ## License
 

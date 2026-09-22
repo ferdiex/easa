@@ -1,6 +1,8 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
+
 title: "EASA: Embedded Action Selection Architecture -- a basal ganglia robot model under realistic contact physics"
+
 type: software
 
 authors:
@@ -13,6 +15,11 @@ repository-code: "https://github.com/ferdiex/easa"
 license: MIT
 
 version: "1.0.0"
+
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.22898109"
+    description: "Zenodo archive of this repository"
 
 keywords:
   - basal ganglia
