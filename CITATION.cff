@@ -1,19 +1,19 @@
-# This CITATION.cff file was generated as a SKELETON -- fields marked
-# "TODO" are placeholders and must be filled in before this file is
-# accurate. See https://citation-file-format.github.io for the schema.
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
 title: "EASA: Embedded Action Selection Architecture -- a basal ganglia robot model under realistic contact physics"
 type: software
+
 authors:
   - family-names: "Montes González"
     given-names: "Fernando"
     affiliation: "Universidad Veracruzana"
-    # orcid: "https://orcid.org/TODO"
+
 repository-code: "https://github.com/ferdiex/easa"
+
 license: MIT
-version: "0.1.0"          # TODO: bump alongside git tags, e.g. v0.1-easa
-date-released: "TODO-YYYY-MM-DD"
+
+version: "1.0.0"
+
 keywords:
   - basal ganglia
   - action selection
@@ -21,31 +21,9 @@ keywords:
   - computational neuroscience
   - Khepera
   - PyBullet
+
 abstract: >
   A Python/PyBullet port of the basal ganglia model by Prescott et al.
-  (2006), implementing the embedded action selection architecture (EASA)
+  (2006), implementing the Embedded Action Selection Architecture (EASA)
   with the real geometry of the Khepera I robot and its gripper, running
   the original foraging task under a modern rigid-body physics engine.
-
-# TODO: once the paper is on arXiv and/or the code is archived on Zenodo,
-# uncomment and fill in the block below (or add a `references:` entry if
-# you want to cite the *software* and the *paper* separately).
-#
-# preferred-citation:
-#   type: article
-#   title: "TODO: paper title"
-#   authors:
-#     - family-names: "Montes González"
-#       given-names: "Fernando"
-#       affiliation: "Universidad Veracruzana"
-#     - family-names: "Prescott"
-#       given-names: "Tony"
-#   journal: "TODO"
-#   year: TODO
-#   doi: "TODO"
-#   url: "https://arxiv.org/abs/TODO"
-#
-# identifiers:
-#   - type: doi
-#     value: "TODO"          # Zenodo DOI for this software release
-#     description: "Zenodo archive of this repository"

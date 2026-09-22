@@ -64,9 +64,9 @@ python3 aggregate_sweep_results.py
 
 ## Citation
 
-If you use this code, please cite:
+If you use this software, please cite the accompanying archival manuscript and the corresponding Zenodo release.
 
-> [pending -- fill in with the paper citation once published on arXiv]
+Citation details will be added once the Zenodo DOI and arXiv identifier become available.
 
 ## License
 
