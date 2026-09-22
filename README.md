@@ -4,6 +4,12 @@
 
 # Walking and Chewing Gum: A Vertebrate Basal Ganglia Robot under Realistic Contact Physics
 
+[![DOI](https://zenodo.org/badge/1379701140.svg)](https://doi.org/10.5281/zenodo.22898109)
+
+Archived research release associated with:
+
+> [pending -- fill in with the paper citation once published on arXiv]
+
 A Python and PyBullet implementation of the basal ganglia model described in Gonzalez et al. (2000) and Prescott et al. (2006), using the actual Khepera I geometry and gripper, and reproducing the original foraging task in a modern rigid-body physics simulation.
 
 This implementation follows the **embedded action selection architecture (EASA)**: action selection (here, the basal ganglia model) is embedded directly in the sensorimotor loop of a physically simulated robot, rather than evaluated in the abstract.
