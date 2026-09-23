@@ -4,11 +4,9 @@
 
 # Walking and Chewing Gum: A Vertebrate Basal Ganglia Robot under Realistic Contact Physics
 
-[![DOI](https://zenodo.org/badge/1379701140.svg)](https://doi.org/10.5281/zenodo.22898109)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22898109.svg)](https://doi.org/10.5281/zenodo.22898109)
 
-Archived research release associated with:
-
-> [pending -- fill in with the paper citation once published on arXiv]
+> Montes Gonzalez, F. (2026). *Walking and Chewing Gum: A Basal Ganglia Vertebrate Robot Under Realistic Contact Physics*. Preprints.org. https://doi.org/10.20944/preprints202609.2037.v1
 
 A Python and PyBullet implementation of the basal ganglia model described in Gonzalez et al. (2000) and Prescott et al. (2006), using the actual Khepera I geometry and gripper, and reproducing the original foraging task in a modern rigid-body physics simulation.
 
@@ -70,11 +68,11 @@ python3 aggregate_sweep_results.py
 
 ## Citation
 
-If you use this software, please cite:
-Fernando Montes González.
-Walking and Chewing Gum: A Basal Ganglia Vertebrate Robot Under Realistic Contact Physics.
-Zenodo archive:
-https://doi.org/10.5281/zenodo.22898109
+If you use this code, please cite:
+
+> Montes Gonzalez, F. (2026). *Walking and Chewing Gum: A Basal Ganglia Vertebrate Robot Under Realistic Contact Physics*. Preprints.org. https://doi.org/10.20944/preprints202609.2037.v1
+
+Code archive (Zenodo): https://doi.org/10.5281/zenodo.22898109
 
 ## License
 

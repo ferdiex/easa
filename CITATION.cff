@@ -1,26 +1,19 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
-
 title: "EASA: Embedded Action Selection Architecture -- a basal ganglia robot model under realistic contact physics"
-
 type: software
-
 authors:
   - family-names: "Montes González"
     given-names: "Fernando"
     affiliation: "Universidad Veracruzana"
-
 repository-code: "https://github.com/ferdiex/easa"
-
 license: MIT
-
-version: "1.0.0"
-
 identifiers:
   - type: doi
     value: "10.5281/zenodo.22898109"
-    description: "Zenodo archive of this repository"
-
+    description: "Archived software release on Zenodo (concept DOI, always resolves to the latest version)."
+version: "0.1.0"
+date-released: "2026-09-22"
 keywords:
   - basal ganglia
   - action selection
@@ -28,9 +21,21 @@ keywords:
   - computational neuroscience
   - Khepera
   - PyBullet
-
 abstract: >
   A Python/PyBullet port of the basal ganglia model by Prescott et al.
-  (2006), implementing the Embedded Action Selection Architecture (EASA)
+  (2006), implementing the embedded action selection architecture (EASA)
   with the real geometry of the Khepera I robot and its gripper, running
   the original foraging task under a modern rigid-body physics engine.
+
+preferred-citation:
+  type: unpublished
+  title: "Walking and Chewing Gum: A Basal Ganglia Vertebrate Robot Under Realistic Contact Physics"
+  authors:
+    - family-names: "Montes González"
+      given-names: "Fernando"
+      affiliation: "Universidad Veracruzana"
+  year: 2026
+  month: 9
+  doi: "10.20944/preprints202609.2037.v1"
+  url: "https://www.preprints.org/manuscript/202609.2037/v1"
+  notes: "Preprint, Preprints.org. Not yet peer-reviewed."
