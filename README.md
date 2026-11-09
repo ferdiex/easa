@@ -31,6 +31,12 @@ This implementation follows the **embedded action selection architecture (EASA)*
 pip install -r requirements.txt
 ```
 
+On Apple Silicon Macs, PyBullet can be installed with conda
+(`conda install -c conda-forge pybullet`) or, with pip, through the
+prebuilt wheel `pip install pybullet-arm64==3.2.8`. Physics is not
+bit-identical across machines or builds, so results are statistically
+equivalent but trajectories may differ slightly.
+
 ## Basic usage
 
 ```bash
